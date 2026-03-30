@@ -467,18 +467,64 @@ h1 {
         margin-left: 20px;
     }
 
+    .hero-section{
+        height: 500px;
+    }
+
+    .scrolldown{
+        top: 50px;
+    }
+
     #searchInput{
         width: 120px;
         font-size: 12px;
     }
 
     .product{
-        min-width: 90%;
-        max-width: 90%;
+        width: 300px;
     }
 
     h1{
         font-size: 28px;
+    }
+    .btn-primary {
+        width: 180px;
+        height: 70px;
+        padding-top: 8px;
+    }
+
+    .btn-secondary{
+        padding-top: 18px;
+    }
+
+    .cart{
+        margin-right: 15px;
+    }
+
+    .footer-container{
+        grid-template-columns: 1fr; /* 1 колонка */
+        text-align: center;
+        height: 1000px;
+    }
+
+    .footer-column{
+        margin-bottom: 20px;
+    }
+
+    .footer-column h3{
+        font-size: 20px;
+    }
+
+    .footer-column ul li{
+        margin-bottom: 6px;
+    }
+
+    .footer{
+        padding: 40px 10px;
+    }
+
+    .footer-bottom{
+        font-size: 12px;
     }
 
 }
