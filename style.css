@@ -314,7 +314,7 @@ h1 {
 
 
 .btn-tovar {
-    background: linear-gradient(32deg,#a9c4f54a,#e49fc9,#e49fc9,#e0ddbf);
+    background: #e49fc9;
     color: #203255;
     padding: 7px 14px;
     border-radius: 10px;
@@ -326,13 +326,13 @@ h1 {
 }
 
 .btn-tovar:hover {
-    background: linear-gradient(32deg,#e49fc9,#a9c4f54a,#e0ddbf,#e49fc9);
+    background: #d971b1;
     backdrop-filter: blur(0px);
  color: #010101;
 }
 
 .btn-tovar:active {
-    background: linear-gradient(32deg,#e19cc736,#a9c4f54a,#e0ddbf,#e49fc930);
+    background-image: url(/img/градіент.avif);
   transition: 0.3s;
   transform: scale(0.93);
 }
