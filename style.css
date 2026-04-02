@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #fcf7c041, #FCFAEE);
+    background: #ffffff;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -16,6 +16,7 @@ body {
 }
 
 header {
+    color: #ffffff;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,15 +24,15 @@ header {
     display: flex;
     align-items: center;
     gap: 40px;
-    background-color: #9CC6DB;
-    height: 70px;
+    background-color: #3F72AF;
+    height: 60px;
     opacity: 100%;
     z-index: 1000;
 }
 
 .headerimg {
     margin-left: 80px;
-    width: 70px;
+    width: 60px;
 }
 
 .nav-list {
@@ -44,7 +45,7 @@ header {
 
 .nav-list a {
     text-decoration: none;
-    color: #222;
+    color: #ffffff;
     font-size: 20px;
     transition: color 0.3s ease;
 }
@@ -235,6 +236,8 @@ h1 {
 .pr {
     font-size: 30px;
     margin-top: 30px;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .tovar {
@@ -250,8 +253,7 @@ h1 {
     box-shadow: 0 8px 20px #4f638a7c;
     padding: 20px;
     border-radius: 15px;
-    min-width: 290px;
-    max-width: 290px;
+    width: 330px;
     margin: 10px;
     margin-left: 2%;
     margin-right: 2%;
@@ -314,7 +316,7 @@ h1 {
 
 
 .btn-tovar {
-    background: #e49fc9;
+    background: #DBE2EF;
     color: #203255;
     padding: 7px 14px;
     border-radius: 10px;
@@ -326,7 +328,7 @@ h1 {
 }
 
 .btn-tovar:hover {
-    background: #d971b1;
+    background: #bfcfed;
     backdrop-filter: blur(0px);
  color: #010101;
 }
@@ -344,10 +346,8 @@ h1 {
 }
 
 .footer {
-    background-color: #9CC6DB;
+    background-color: #3F72AF;
     padding: 60px 0 20px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     font-family: sans-serif;
     margin-top: 30px;
     font-size: 20px;
@@ -365,13 +365,13 @@ h1 {
 
 .footer-column h3 {
     margin-bottom: 15px;
-    color: #2E2E2E;
+    color: #ffffff;
     font-size: 25px;
 }
 
 .logo {
     margin-bottom: 5px;
-    color: #2E2E2E;
+    color: #ffffff;
 }
 
 .slogan {
@@ -396,12 +396,15 @@ h1 {
 
 .footer-column a {
     text-decoration: none;
-    color: #2E2E2E;
+    color: #fffcfc;
     transition: 0.3s;
 }
 
 .footer-column a:hover {
     color: #CF4B00;
+}
+.footer-column {
+    color: #ffffff;
 }
 
 .footer-bottom {
@@ -410,7 +413,7 @@ h1 {
     text-align: center;
     border-top: 1px solid #DDBA7D;
     font-size: 14px;
-    color: #2E2E2E;
+    color: #d1d1d1;
 }
 
 .cart{
@@ -537,4 +540,44 @@ h1 {
 
 .pr p{
     font-size: 35px;
+}
+
+/* --- HERO SECTION (THREE.JS) --- */
+    #scene {
+      margin-top: 60px;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-ui {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .cart-total{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#order-btn{
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #CF4B00;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }

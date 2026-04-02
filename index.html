@@ -21,33 +21,29 @@
             <input type="text" id="searchInput" placeholder="Пошук...">
         </nav>
         <div class="cart" id="cart-btn">
-    <img src="/img/1413908.png" width="26px"/> <span id="cart-count">0</span>
+    <img src="https://pngimg.com/d/shopping_cart_PNG4.png" width="26px"/> <span id="cart-count">0</span>
 </div>
     </header>
     
     <main>
-        <div class="hero-section">
-            <div class="hero-content">
-                <p class="eyebrow">Більше ніж подарунок</p>
-                <h1>LumiBox — даруй світло в коробці</h1>
-
-                <div class="button-group">
-                    <a href="#" class="btn-primary">Дізнатися більше</a>
-                    <a href="#" class="btn-secondary">Каталог</a>
-                </div>
-                            <div class="scrolldown" style="--color: skyblue">
-    <div class="chevrons">
-        <div class="chevrondown"></div>
-        <div class="chevrondown"></div>
+       <div id="scene">
+  <canvas id="c"></canvas>
+  <div class="hero-ui">
+    <p style="font-size:13px;color:#888;margin:0 0 10px;letter-spacing:0.05em;">Більше ніж подарунок</p>
+    <h1 style="font-family:Georgia,serif;font-size:clamp(28px,4vw,46px);font-weight:700;color:#111;margin:0 0 28px;line-height:1.25;max-width:520px;">LumiBox — даруй світло в коробці</h1>
+    <div style="display:flex;gap:12px;pointer-events:all;">
+      <button style="background:#111;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;">Дізнатися більше</button>
+      <button style="background:#fff;color:#111;border:1.5px solid #ddd;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;">Каталог</button>
     </div>
+    <div style="margin-top:36px;width:26px;height:42px;border:2px solid #aac4ff;border-radius:13px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;">
+      <div id="scroll-dot" style="width:4px;height:8px;background:#aac4ff;border-radius:2px;"></div>
+    </div>
+  </div>
 </div>
-            </div>
-
-        </div>
         
-        <div class="pr"><p> Товар який може вам сподобатись</p></div>
+        <div class="pr"><p> Товари, які можуть вам сподобатись</p></div>
         <div class="tovar">
-            <article class="product">
+            <article class="product" data-price="228">
                 <h3>До коли</h3>
                 <img src="img/pivn.png" width="180px">
 
@@ -57,7 +53,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="670">
                 <h3>Лакшері</h3>
                 <img src="img/premium.webp" width="180px">
 
@@ -67,7 +63,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="500">
                 <h3>Мамі</h3>
                 <img src="img/mama.webp" width="180px">
 
@@ -79,7 +75,7 @@
             </article>
         </div>
         <div class="tovar">
-            <article class="product">
+            <article class="product" data-price="400">
                 <h3>Релакс</h3>
                 <img src="img/ввв.png" width="180px">
 
@@ -89,7 +85,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="250">
                 <h3>Чайовий</h3>
                 <img src="img/чай.webp" width="199px">
 
@@ -99,7 +95,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="350">
                 <h3>Горішки</h3>
                 <img src="img/limited-edition1-768x768.png" width="180px">
 
@@ -111,7 +107,7 @@
             </article>
         </div>
         <div class="tovar">
-            <article class="product">
+            <article class="product" data-price="400">
                 <h3>Релакс</h3>
                 <img src="img/ввв.png" width="180px">
 
@@ -121,7 +117,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="250">
                 <h3>Чайовий</h3>
                 <img src="img/чай.webp" width="199px">
 
@@ -131,7 +127,7 @@
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
-            <article class="product">
+            <article class="product" data-price="350">
                 <h3>Горішки</h3>
                 <img src="img/limited-edition1-768x768.png" width="180px">
 
@@ -147,6 +143,11 @@
     <div class="cart-panel" id="cart-panel">
     <h2>Кошик</h2>
     <div id="cart-items"></div>
+    <div class="cart-total">
+    Сума: <span id="cart-total">0</span> грн
+</div>
+
+<button id="order-btn">Замовити</button>
 </div>
 
     <footer class="footer">
@@ -196,6 +197,147 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ТВОЯ ВЕРСІЯ АНІМАЦІЇ */
+(function(){
+  const scene3 = document.getElementById('scene');
+  const canvas = document.getElementById('c');
+  let W = scene3.clientWidth, H = scene3.clientHeight;
+  renderer_init();
+
+  var renderer, scene, camera;
+
+  function renderer_init(){
+    W = scene3.clientWidth; H = scene3.clientHeight;
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0xf5f0ff, 1);
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(60, W/H, 0.1, 200);
+    camera.position.z = 28;
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+    const sun = new THREE.DirectionalLight(0xffeef8, 1.3);
+    sun.position.set(6,10,12); scene.add(sun);
+    const fill = new THREE.DirectionalLight(0xd0e8ff, 0.7);
+    fill.position.set(-8,-4,6); scene.add(fill);
+  }
+
+  const bgColors = [[0.96,0.91,1.0],[0.88,0.96,1.0],[1.0,0.97,0.88],[0.92,1.0,0.92]];
+  let bgTarget=[...bgColors[0]], bgCurrent=[...bgColors[0]], bgIdx=0, bgTimer=0;
+
+  const BOX_COLORS    = [0xff4d6d,0xff9a3c,0xffde59,0x48c774,0x3273dc,0x9b59b6,0xff6bbd,0x00d1b2,0xf368e0,0xffb347];
+  const RIBBON_COLORS = [0xffd6ee,0xfff0d0,0xfffbd0,0xd0ffe8,0xd0e8ff,0xeed0ff,0xffd6ee,0xd0fff8,0xfcd0ff,0xffe8c0];
+
+  function makeBow(rc) {
+    const g = new THREE.Group();
+    const mat = new THREE.MeshStandardMaterial({color: rc, roughness: 0.25, metalness: 0.1});
+    const loop1 = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.05, 10, 24, Math.PI), mat);
+    loop1.rotation.z = Math.PI * 0.55; loop1.position.set(-0.12, 0.1, 0); g.add(loop1);
+    const loop2 = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.05, 10, 24, Math.PI), mat);
+    loop2.rotation.z = -Math.PI * 0.55; loop2.position.set(0.12, 0.1, 0); g.add(loop2);
+    const loop3 = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.04, 8, 20, Math.PI), mat);
+    loop3.rotation.z = Math.PI * 0.3; loop3.rotation.y = Math.PI * 0.4; loop3.position.set(-0.08, 0.06, -0.05); g.add(loop3);
+    const loop4 = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.04, 8, 20, Math.PI), mat);
+    loop4.rotation.z = -Math.PI * 0.3; loop4.rotation.y = -Math.PI * 0.4; loop4.position.set(0.08, 0.06, -0.05); g.add(loop4);
+    const knot = new THREE.Mesh(new THREE.SphereGeometry(0.08, 10, 10), mat); g.add(knot);
+    const tailGeo1 = new THREE.CylinderGeometry(0.025, 0.045, 0.32, 8);
+    const tail1 = new THREE.Mesh(tailGeo1, mat); tail1.rotation.z = Math.PI * 0.2; tail1.position.set(-0.18, -0.18, 0); g.add(tail1);
+    const tailGeo2 = new THREE.CylinderGeometry(0.025, 0.045, 0.32, 8);
+    const tail2 = new THREE.Mesh(tailGeo2, mat); tail2.rotation.z = -Math.PI * 0.2; tail2.position.set(0.18, -0.18, 0); g.add(tail2);
+    return g;
+  }
+
+  function makeBox(bc, rc) {
+    const g = new THREE.Group();
+    const sx=0.9+Math.random()*0.5, sy=0.75+Math.random()*0.45, sz=0.9+Math.random()*0.5;
+    const bm = new THREE.MeshStandardMaterial({color:bc, roughness:0.5});
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz), bm));
+    const rm = new THREE.MeshStandardMaterial({color:rc, roughness:0.25, metalness:0.1});
+    const rw = 0.08;
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(sx+0.02, rw, sz+0.02), rm));
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(rw, sy+0.02, sz+0.02), rm));
+    const bow = makeBow(rc);
+    bow.position.y = sy/2 + 0.06;
+    const bs = sx * 0.68; bow.scale.setScalar(bs);
+    g.add(bow);
+    g.userData = {
+      vx:(Math.random()-.5)*0.035, vy:(Math.random()-.5)*0.03, vz:(Math.random()-.5)*0.02,
+      rx:(Math.random()-.5)*0.016, ry:(Math.random()-.5)*0.02, rz:(Math.random()-.5)*0.01,
+      wobble:Math.random()*Math.PI*2, ws:0.008+Math.random()*0.012, baseX:0, baseY:0, ox:0, oy:0
+    };
+    return g;
+  }
+
+  const boxes = [];
+  for(let i=0;i<26;i++){
+    const ci = i % BOX_COLORS.length;
+    const b = makeBox(BOX_COLORS[ci], RIBBON_COLORS[ci]);
+    b.position.set((Math.random()-.5)*46,(Math.random()-.5)*32,(Math.random()-.5)*18-4);
+    b.rotation.set(Math.random()*Math.PI*2,Math.random()*Math.PI*2,Math.random()*Math.PI*2);
+    const s=0.55+Math.random()*0.75; b.scale.setScalar(s);
+    b.userData.baseX = b.position.x; b.userData.baseY = b.position.y;
+    scene.add(b); boxes.push(b);
+  }
+
+  let mx=0, my=0, tmx=0, tmy=0;
+  scene3.addEventListener('mousemove', e=>{
+    const r = scene3.getBoundingClientRect();
+    tmx = ((e.clientX-r.left)/W)*2-1;
+    tmy = -((e.clientY-r.top)/H)*2+1;
+  });
+
+  const dot = document.getElementById('scroll-dot');
+  let dotY=0, dotDir=1;
+
+  function animate(){
+    requestAnimationFrame(animate);
+    mx+=(tmx-mx)*0.04; my+=(tmy-my)*0.04;
+    bgTimer+=0.004;
+    if(bgTimer>1){ bgTimer=0; bgIdx=(bgIdx+1)%bgColors.length; bgTarget=[...bgColors[bgIdx]]; }
+    bgCurrent[0]+=(bgTarget[0]-bgCurrent[0])*0.005;
+    bgCurrent[1]+=(bgTarget[1]-bgCurrent[1])*0.005;
+    bgCurrent[2]+=(bgTarget[2]-bgCurrent[2])*0.005;
+    renderer.setClearColor(new THREE.Color(bgCurrent[0],bgCurrent[1],bgCurrent[2]),1);
+
+    boxes.forEach((b,i)=>{
+      const u=b.userData;
+      u.wobble+=u.ws;
+      b.position.x+=u.vx+Math.sin(u.wobble*0.6)*0.003;
+      b.position.y+=u.vy+Math.cos(u.wobble*0.4)*0.0025;
+      b.position.z+=u.vz;
+      b.rotation.x+=u.rx; b.rotation.y+=u.ry; b.rotation.z+=u.rz;
+      const depth=(b.position.z+10)/20;
+      const str=(0.5+depth)*3.5;
+      const tx=mx*str*(0.8+i%3*0.15);
+      const ty=my*str*(0.8+i%3*0.15);
+      u.ox+=(tx-u.ox)*0.05; u.oy+=(ty-u.oy)*0.05;
+      b.position.x+=(u.ox-(b.position.x-u.baseX))*0.03;
+      b.position.y+=(u.oy-(b.position.y-u.baseY))*0.03;
+      if(b.position.x>26) b.position.x=-26; if(b.position.x<-26) b.position.x=26;
+      if(b.position.y>19) b.position.y=-19; if(b.position.y<-19) b.position.y=19;
+      if(b.position.z>10) b.position.z=-14; if(b.position.z<-14) b.position.z=10;
+    });
+
+    camera.position.x=mx*0.6; camera.position.y=my*0.4;
+    camera.lookAt(0,0,0);
+    dotY+=0.06*dotDir;
+    if(dotY>10||dotY<0) dotDir*=-1;
+    if(dot) dot.style.transform=`translateY(${dotY}px)`;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    W=scene3.clientWidth; H=scene3.clientHeight;
+    camera.aspect=W/H; camera.updateProjectionMatrix();
+    renderer.setSize(W,H);
+  });
+})();
+</script>
 </body>
 
 </html>

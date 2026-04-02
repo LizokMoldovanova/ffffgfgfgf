@@ -1,17 +1,19 @@
 const searchInput = document.getElementById("searchInput");
 const products = document.querySelectorAll(".product");
+const cartTotal = document.getElementById("cart-total");
 
 searchInput.addEventListener("input", function () {
 
     const searchText = searchInput.value.toLowerCase();
 
-    products.forEach(function(product){
+    products.forEach(function (product) {
 
         const title = product.querySelector("h3").textContent.toLowerCase();
+        
 
-        if(title.includes(searchText)){
+        if (title.includes(searchText)) {
             product.style.display = "block";
-        } else{
+        } else {
             product.style.display = "none";
         }
 
@@ -36,7 +38,7 @@ cartPanel.addEventListener("click", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-    if(!cartPanel.contains(e.target) && !cartBtn.contains(e.target)){
+    if (!cartPanel.contains(e.target) && !cartBtn.contains(e.target)) {
         cartPanel.classList.remove("active");
     }
 });
@@ -47,25 +49,29 @@ buttons.forEach(button => {
 
         const product = button.closest(".product");
         const title = product.querySelector("h3").textContent;
-
+        const price = Number(product.dataset.price);
         const existing = cart.find(item => item.title === title);
 
-        if(existing){
+        if (existing) {
             existing.qty++;
-        } else{
-            cart.push({ title: title, qty: 1 });
+        } else {
+            cart.push({ title: title, price: price, qty: 1 });
         }
 
         updateCart();
     });
 });
 
-function updateCart(){
+function updateCart() {
 
     cartItems.innerHTML = "";
-    cartCount.textContent = cart.length;
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    let total = 0;
 
     cart.forEach(item => {
+
+        total += item.price * item.qty;
 
         const div = document.createElement("div");
         div.classList.add("cart-item");
@@ -84,7 +90,7 @@ function updateCart(){
 
         minus.addEventListener("click", () => {
             item.qty--;
-            if(item.qty <= 0){
+            if (item.qty <= 0) {
                 cart = cart.filter(i => i !== item);
             }
             updateCart();
@@ -97,4 +103,22 @@ function updateCart(){
 
         cartItems.appendChild(div);
     });
+
+    cartTotal.textContent = total;
 }
+
+const orderBtn = document.getElementById("order-btn");
+
+orderBtn.addEventListener("click", () => {
+
+    if(cart.length === 0){
+        alert("Кошик порожній 😢");
+        return;
+    }
+
+    alert("Дякуємо за замовлення ❤️");
+
+    cart = [];
+    updateCart();
+
+});
