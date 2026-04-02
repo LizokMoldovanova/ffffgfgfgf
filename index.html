@@ -15,7 +15,7 @@
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="#">Каталог</a></li>
-                <li><a href="#">Про нас</a></li>
+                <li><a href="#" id="navAbout">Про нас</a></li>
                 <li><a href="#">Контакти</a></li>
             </ul>
             <input type="text" id="searchInput" placeholder="Пошук...">
@@ -24,7 +24,18 @@
             <img src="https://pngimg.com/d/shopping_cart_PNG4.png" width="26px" /> <span id="cart-count">0</span>
         </div>
     </header>
-
+    <div id="aboutModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Про нас</h2>
+    <p>
+      LumiBox — це більше, ніж просто подарунки. Це емоції, які можна потримати в руках.<br>
+      Ми створюємо унікальні подарункові бокси, щоб допомогти людям дарувати радість легко і красиво.<br>
+      Наша мета — зробити так, щоб кожен подарунок викликав щиру усмішку.<br>
+      Ми віримо, що маленькі речі можуть створювати великі моменти. 💛
+    </p>
+  </div>
+</div>
     <main>
         <div id="scene">
             <canvas id="c"></canvas>
@@ -116,20 +127,20 @@
         </div>
         <div class="tovar">
             <article class="product" data-price="400">
-                <h3>Релакс</h3>
-                <img src="img/ввв.png" width="180px">
+                <h3>Спокій</h3>
+                <img src="img/4-nareshti-vdoma.jpg" width="180px">
 
-                <p>Помийся</p>
+                <p>Ароматне заспокіливе</p>
                 <div class="product-bottom">
                     <p class="price">Ціна: багато</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
             <article class="product" data-price="250">
-                <h3>Чайовий</h3>
-                <img src="img/чай.webp" width="199px">
+                <h3>Перлини</h3>
+                <img src="img/zhemchug_drakona_nabor-855x855_0.webp" width="179px">
 
-                <p>Ну я б з таких баночок не пила</p>
+                <p>Чай чай чайок</p>
                 <div class="product-bottom">
                     <p class="price">Ціна: багато</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
@@ -204,8 +215,9 @@
             © 2026 LumiBox. Усі права захищені.
         </div>
     </footer>
-    <script src="script.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
     <script>
         /* ТВОЯ ВЕРСІЯ АНІМАЦІЇ */
         (function () {
@@ -346,6 +358,7 @@
             });
         })();
     </script>
+
 </body>
 
 </html>

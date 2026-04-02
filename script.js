@@ -122,3 +122,46 @@ orderBtn.addEventListener("click", () => {
     updateCart();
 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById("aboutModal");
+  const btn = document.getElementById("navAbout");
+  const span = modal.querySelector(".close");
+
+  // відкриття модалки
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // щоб не скролило вгору
+    modal.style.display = "block";
+  });
+
+  // закриття модалки по хрестику
+  span.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // закриття модалки по кліку на тло
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+const modal = document.getElementById("aboutModal");
+const btn = document.getElementById("navAbout");
+const span = modal.querySelector(".close");
+
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.classList.add("show");
+});
+
+span.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+  }
+});
