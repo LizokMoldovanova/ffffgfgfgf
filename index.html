@@ -14,9 +14,9 @@
 
         <nav class="nav">
             <ul class="nav-list">
-                <li><a href="#">Каталог</a></li>
-                <li><a href="#" id="navAbout">Про нас</a></li>
-                <li><a href="#">Контакти</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#about" id="navAbout">Про нас</a></li>
+                <li><a href="#contacts">Контакти</a></li>
             </ul>
             <input type="text" id="searchInput" placeholder="Пошук...">
         </nav>
@@ -48,8 +48,8 @@
                     <button
                         style="background:#111;color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;">Дізнатися
                         більше</button>
-                    <button
-                        style="background:#fff;color:#111;border:1.5px solid #ddd;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;">Каталог</button>
+                    <button 
+                        style="background:#fff;color:#111;border:1.5px solid #ddd;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;text-decoration: none;"><a style="text-decoration: none; color: inherit;" href="#catalog">Каталог</a></button>
                 </div>
                 <div
                     style="margin-top:36px;width:26px;height:42px;border:2px solid #aac4ff;border-radius:13px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="pr">
+        <div id="catalog"  class="pr">
             <p> Товари, які можуть вам сподобатись</p>
         </div>
         <div class="tovar">
@@ -68,7 +68,7 @@
 
                 <p>Гарний набір для перекусу</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 228 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -78,7 +78,7 @@
 
                 <p>Серйозний набір для серйозних</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 670 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -88,7 +88,7 @@
 
                 <p>Порадуй маму хоч якось</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 500 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -100,7 +100,7 @@
 
                 <p>Помийся</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 400 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -110,7 +110,7 @@
 
                 <p>Ну я б з таких баночок не пила</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 250 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -120,7 +120,7 @@
 
                 <p>Корисний смаколик</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 350 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -132,7 +132,7 @@
 
                 <p>Ароматне заспокіливе</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 400 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -142,17 +142,17 @@
 
                 <p>Чай чай чайок</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 250 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
             <article class="product" data-price="350">
-                <h3>Горішки</h3>
-                <img src="img/limited-edition1-768x768.png" width="180px">
+                <h3>Сирний</h3>
+                <img src="img/1076_20__1.png" width="190px">
 
-                <p>Корисний смаколик</p>
+                <p>Для гурманів</p>
                 <div class="product-bottom">
-                    <p class="price">Ціна: багато</p>
+                    <p class="price">Ціна: 350 грн</p>
                     <a href="#" class="btn-tovar add-to-cart">Хочу</a>
                 </div>
             </article>
@@ -202,7 +202,7 @@
             </div>
 
 
-            <div class="footer-column">
+            <div id="contacts" class="footer-column">
                 <h3>Контакти</h3>
                 <p>📍 Одеса, Україна</p>
                 <p>📞 +380 XX XXX XX XX</p>

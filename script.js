@@ -128,18 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById("navAbout");
   const span = modal.querySelector(".close");
 
-  // відкриття модалки
+  // відкрити
   btn.addEventListener("click", (e) => {
-    e.preventDefault(); // щоб не скролило вгору
+    e.preventDefault(); // шоб не скролило
     modal.style.display = "block";
   });
 
-  // закриття модалки по хрестику
+  // закриття модалки по хрєстику
   span.addEventListener("click", () => {
     modal.style.display = "none";
   });
 
-  // закриття модалки по кліку на тло
+  // закрити модалку по кліку десь 
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
